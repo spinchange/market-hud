@@ -1,8 +1,19 @@
 # Market HUD
 
-A lightweight Python system tray app that shows live market prices on demand. Click the tray icon to toggle the popup; click anywhere on it to dismiss.
+A lightweight Windows system tray app that shows live market prices on demand.
 
 ![Market HUD screenshot](screenshot.png)
+
+## 🚀 Quick Start (No Python Required)
+
+1. **Download:** Go to the [Releases](https://github.com/spinchange/market-hud/releases) page and download `MarketHUD.exe`.
+2. **Run:** Double-click `MarketHUD.exe`. 
+3. **Use:** Look for the new icon in your **System Tray** (bottom-right of your screen, near the clock). 
+   - **Left-Click** the icon to show/hide the market prices.
+   - **Right-Click** the icon to Refresh or Quit.
+4. **Auto-Start:** To have it run automatically when you turn on your computer, right-click `MarketHUD.exe`, select **Create Shortcut**, and move that shortcut into your Windows **Startup** folder (`Win + R`, type `shell:startup`).
+
+---
 
 ## Features
 
