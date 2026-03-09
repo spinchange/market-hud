@@ -1,0 +1,8 @@
+symbol,name,asset_type
+^GSPC,S&P 500,equity
+^IXIC,Nasdaq,equity
+^DJI,Dow Jones,equity
+^RUT,Russell 2000,equity
+GC=F,Gold,futures
+CL=F,Oil (WTI),futures
+BTC-USD,Bitcoin,crypto
