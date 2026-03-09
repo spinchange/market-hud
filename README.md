@@ -50,3 +50,11 @@ BTC-USD,Bitcoin,crypto
 
 - Python 3.9+
 - yfinance, pystray, Pillow, tzdata
+
+---
+
+## Contributors
+
+- **[Chris Duffy](https://github.com/spinchange)** - Lead Developer
+- **Claude** ([Anthropic](https://anthropic.com)) - <img src="https://mintlify.s3.us-west-1.amazonaws.com/anthropic/logo/light.svg" width="18" height="18"> AI Programming Assistant (Architecture & Initial implementation)
+- **Gemini CLI** ([Google](https://deepmind.google/technologies/gemini/)) - <img src="https://www.gstatic.com/lamda/images/favicon_v2_160_v2.svg" width="18" height="18"> AI Deployment & Refactoring (VIX/10Y, Dynamic Sorting, & EXE packaging)
