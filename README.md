@@ -6,7 +6,8 @@ A lightweight Python system tray app that shows live market prices on demand. Cl
 
 ## Features
 
-- Live prices for S&P 500, Nasdaq, Dow Jones, Russell 2000, Gold, Oil (WTI), and Bitcoin
+- Live prices for S&P 500, Nasdaq, Dow Jones, Russell 2000, Gold, Oil (WTI), Bitcoin, VIX, and 10-Year Treasury yield
+- Dynamic Sorting — items are automatically ordered by daily performance (greatest to least)
 - Green/red coloring for up/down; dimmed with `·` when market is closed (shows last close vs prior close)
 - U.S. equity hours aware — crypto and futures treated as always live
 - Refreshes every 30 seconds; cached on failure so the popup always shows something
@@ -30,6 +31,8 @@ symbol,name,asset_type
 ^GSPC,S&P 500,equity
 GC=F,Gold,futures
 BTC-USD,Bitcoin,crypto
+^VIX,VIX,equity
+^TNX,10-Year Treasury,equity
 ```
 
 ## Requirements

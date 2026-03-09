@@ -37,11 +37,12 @@ class DataProvider:
 
     def get_items(self) -> list[dict]:
         with self._lock:
-            return [
+            items = [
                 self._cache[s["symbol"]]
                 for s in self._symbols
                 if s["symbol"] in self._cache
             ]
+            return sorted(items, key=lambda x: x["pct"], reverse=True)
 
     def _loop(self):
         while self._running:

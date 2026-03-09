@@ -6,3 +6,5 @@ symbol,name,asset_type
 GC=F,Gold,futures
 CL=F,Oil (WTI),futures
 BTC-USD,Bitcoin,crypto
+^VIX,VIX,equity
+^TNX,10-Year Treasury,equity
