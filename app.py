@@ -1,3 +1,4 @@
+import queue
 import threading
 import tkinter as tk
 from pathlib import Path
@@ -11,6 +12,7 @@ from popup import Popup
 BASE = Path(__file__).parent
 SYMBOLS_CSV = BASE / "symbols.csv"
 REFRESH_INTERVAL = 30  # seconds
+POLL_MS = 100  # how often the main thread checks for tray commands
 
 
 def _make_icon() -> Image.Image:
@@ -38,16 +40,37 @@ def main():
 
     popup = Popup(root, provider)
 
+    # pystray callbacks run on its own thread and tkinter is not thread-safe,
+    # so callbacks only enqueue commands; poll() runs them on the main thread.
+    commands: queue.Queue[str] = queue.Queue()
+
     def on_click(icon, item=None):
-        root.after(0, popup.toggle)
+        commands.put("toggle")
 
     def on_refresh(icon, item):
         provider.force_refresh()
-        root.after(600, popup.refresh)
+        commands.put("refresh")
 
     def on_quit(icon, item):
         icon.stop()
-        root.after(0, root.quit)
+        commands.put("quit")
+
+    def poll():
+        while True:
+            try:
+                cmd = commands.get_nowait()
+            except queue.Empty:
+                break
+            if cmd == "toggle":
+                popup.toggle()
+            elif cmd == "refresh":
+                root.after(600, popup.refresh)
+            elif cmd == "quit":
+                root.quit()
+                return
+        root.after(POLL_MS, poll)
+
+    root.after(POLL_MS, poll)
 
     menu = pystray.Menu(
         pystray.MenuItem("Show / Hide", on_click, default=True),
