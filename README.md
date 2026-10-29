@@ -8,6 +8,7 @@ A lightweight Windows system tray app that shows live market prices on demand.
 
 1. **Download:** Go to the [Releases](https://github.com/spinchange/market-hud/releases) page and download `MarketHUD.exe`.
 2. **Run:** Double-click `MarketHUD.exe`. 
+   - **"Windows protected your PC"?** Because `MarketHUD.exe` isn't code-signed, Windows SmartScreen may warn you the first time you run it. Click **More info**, then **Run anyway**. You'll only see this once.
 3. **Use:** Look for the new icon in your **System Tray** (bottom-right of your screen, near the clock). 
    - **Left-Click** the icon to show/hide the market prices.
    - **Right-Click** the icon to Refresh or Quit.
