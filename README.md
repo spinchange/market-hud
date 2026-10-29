@@ -20,7 +20,7 @@ A lightweight Windows system tray app that shows live market prices on demand.
 - Live prices for S&P 500, Nasdaq, Dow Jones, Russell 2000, Gold, Oil (WTI), Bitcoin, VIX, and 10-Year Treasury yield
 - Dynamic Sorting — items are automatically ordered by daily performance (greatest to least)
 - Green/red coloring for up/down; dimmed with `·` when market is closed (shows last close vs prior close)
-- U.S. equity hours aware — crypto and futures treated as always live
+- U.S. equity hours aware, including NYSE holidays — crypto and futures treated as always live
 - Refreshes every 30 seconds; cached on failure so the popup always shows something
 - Click tray icon to show/hide · right-click for Refresh and Quit
 
