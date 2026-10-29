@@ -16,6 +16,7 @@ class Popup:
         self.dp = data_provider
         self._win: tk.Toplevel | None = None
         self._visible = False
+        self._shown_version = -1
 
     def toggle(self):
         if self._visible:
@@ -40,12 +41,20 @@ class Popup:
         if self._visible:
             self._rebuild()
 
+    def refresh_if_stale(self):
+        """Rebuild an open popup once the provider has fetched new data."""
+        if self._visible and self.dp.version != self._shown_version:
+            self._rebuild()
+
     def _rebuild(self):
         self.hide()
         self._build()
         self._visible = True
 
     def _build(self):
+        # Read version before items so a fetch landing in between triggers
+        # another rebuild rather than being missed.
+        self._shown_version = self.dp.version
         items = self.dp.get_items()
 
         win = tk.Toplevel(self.root)

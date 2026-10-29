@@ -48,8 +48,7 @@ def main():
         commands.put("toggle")
 
     def on_refresh(icon, item):
-        provider.force_refresh()
-        commands.put("refresh")
+        provider.force_refresh()  # open popup updates when the fetch lands
 
     def on_quit(icon, item):
         icon.stop()
@@ -63,11 +62,10 @@ def main():
                 break
             if cmd == "toggle":
                 popup.toggle()
-            elif cmd == "refresh":
-                root.after(600, popup.refresh)
             elif cmd == "quit":
                 root.quit()
                 return
+        popup.refresh_if_stale()
         root.after(POLL_MS, poll)
 
     root.after(POLL_MS, poll)

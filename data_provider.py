@@ -17,6 +17,7 @@ class DataProvider:
         self._lock = threading.Lock()
         self._running = False
         self._thread: threading.Thread | None = None
+        self._version = 0  # bumped after every fetch pass
         self.load_symbols()
 
     def load_symbols(self):
@@ -34,6 +35,11 @@ class DataProvider:
 
     def force_refresh(self):
         threading.Thread(target=self._fetch_all, daemon=True).start()
+
+    @property
+    def version(self) -> int:
+        with self._lock:
+            return self._version
 
     def get_items(self) -> list[dict]:
         with self._lock:
@@ -55,6 +61,8 @@ class DataProvider:
             if result is not None:
                 with self._lock:
                     self._cache[sym["symbol"]] = result
+        with self._lock:
+            self._version += 1
 
     def _fetch_one(self, sym: dict) -> dict | None:
         symbol = sym["symbol"]
