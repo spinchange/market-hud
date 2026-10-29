@@ -26,7 +26,6 @@ class DataProvider:
 
     def start(self):
         self._running = True
-        self._fetch_all()
         self._thread = threading.Thread(target=self._loop, daemon=True)
         self._thread.start()
 
@@ -51,9 +50,11 @@ class DataProvider:
             return sorted(items, key=lambda x: x["pct"], reverse=True)
 
     def _loop(self):
+        # First fetch happens here, off the main thread, so the tray icon
+        # appears immediately; the popup shows "Loading..." until it lands.
         while self._running:
-            time_mod.sleep(self.interval)
             self._fetch_all()
+            time_mod.sleep(self.interval)
 
     def _fetch_all(self):
         for sym in self._symbols:
